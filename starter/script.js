@@ -53,6 +53,11 @@ console.log(cityWind)
 
 });
 
+let currentDay = moment().format("MM/D/YYYY")
+console.log(currentDay)
+
+
+
 // console logs the array that hold the weather information for the selected city    
 
 
