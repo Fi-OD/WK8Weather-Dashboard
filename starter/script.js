@@ -39,28 +39,29 @@ let cityTemp =  cityInfo.main.temp;
 let cityHumidity = cityInfo.main.humidity;
 let cityWind = cityInfo.wind.speed;
 
-/*console.log(cityInfo)
+console.log(cityInfo)
 console.log(cityName)
 console.log(cityLatitude)
 console.log(cityLongitude)
 console.log(cityTemp)
 console.log(cityHumidity)
-console.log(cityWind)*/
+console.log(cityWind)
 
-// this code doesn't work but should call the 5 day forecast API
+// this code call the five day forecast for the searched city
 
-let forecastURL = "https://pro.openweathermap.org/data/2.5/forecast/climate?lat=" + cityLatitude + "&lon=" + cityLongitude + "&appid=" + APIKey;
+let foreCastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${cityInfo.coord.lat}&lon=${cityInfo.coord.lon}&appid=` + APIKey;
 
-console.log(APIKey);
-console.log(cityLatitude)
-console.log(cityLongitude)
-console.log(cityName)
-fetch(forecastURL)
+return fetch (foreCastURL)
+})
+
 .then(response => response.json())
 .then(function(fiveDayForecast){
 
     console.log(fiveDayForecast)
 })
+
+
+
 });
 
 //this code uses the 5 day forecast API
@@ -83,7 +84,7 @@ let dayOneTemperature
 
 //day 5
 
-})
+
 
 
 // displays the current date
