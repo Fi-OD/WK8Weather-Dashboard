@@ -19,7 +19,7 @@ searchBtn.addEventListener("click",function(event){
 
 
 
-// this code takes the cityName variable and adds it to the API Query URL
+// this code takes the inputted city name and extracts the data from the API for the associated city
 
 //let queryURL =  "https://api.openweathermap.org/data/2.5/weather?q=paris&appid=" + APIKey
 let queryURL =  "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey + "&units=metric"
@@ -28,11 +28,7 @@ let queryURL =  "https://api.openweathermap.org/data/2.5/weather?q=" + cityName 
 fetch(queryURL)
 .then(response => response.json())
 .then(function(cityInfo){
-//console.log(cityInfo.main.temp);
-//console.log(cityInfo.main.humidity);
-//console.log(cityInfo.wind.speed);
-//console.log(cityInfo.coord.lat);
-//console.log(cityInfo.coord.lon);
+
 
 let cityName = cityInfo.name
 let cityLatitude = cityInfo.coord.lat;
@@ -53,6 +49,39 @@ console.log(cityWind)
 
 });
 
+//this code uses the 5 day forecast API
+
+console.log(APIKey)
+let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=london&appid=" + APIKey;
+
+console.log(cityName)
+fetch(queryURL)
+.then(response => response.json())
+.then(function(fiveDayForecast){
+
+    console.log(fiveDayForecast)
+
+//day 1
+
+// use moment 
+let dayOneDate = moment().add(1,"days").format("MM/D/YYYY");
+console.log(dayOneDate)
+let dayOneTemp
+let dayOneHumidity
+let dayOneTemperature
+
+//day 2
+
+//day 3
+
+//day 4
+
+//day 5
+
+})
+
+
+// displays the current date
 let currentDay = moment().format("MM/D/YYYY")
 console.log(currentDay)
 
