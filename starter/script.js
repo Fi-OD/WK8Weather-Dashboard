@@ -1,4 +1,7 @@
-let APIKey = "ba823d5a80f10453e7778591d8088004"
+let APIKey = "ba823d5a80f10453e7778591d8088004";
+
+
+
 //let queryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&appid=" + APIKey;
 
 
@@ -21,7 +24,6 @@ searchBtn.addEventListener("click",function(event){
 
 // this code takes the inputted city name and extracts the data from the API for the associated city
 
-//let queryURL =  "https://api.openweathermap.org/data/2.5/weather?q=paris&appid=" + APIKey
 let queryURL =  "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey + "&units=metric"
 
 
@@ -37,35 +39,38 @@ let cityTemp =  cityInfo.main.temp;
 let cityHumidity = cityInfo.main.humidity;
 let cityWind = cityInfo.wind.speed;
 
-console.log(cityInfo)
+/*console.log(cityInfo)
 console.log(cityName)
 console.log(cityLatitude)
 console.log(cityLongitude)
 console.log(cityTemp)
 console.log(cityHumidity)
-console.log(cityWind)
+console.log(cityWind)*/
 
-})
+// this code doesn't work but should call the 5 day forecast API
 
-});
+let forecastURL = "https://pro.openweathermap.org/data/2.5/forecast/climate?lat=" + cityLatitude + "&lon=" + cityLongitude + "&appid=" + APIKey;
 
-//this code uses the 5 day forecast API
-
-console.log(APIKey)
-let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=london&appid=" + APIKey;
-
+console.log(APIKey);
+console.log(cityLatitude)
+console.log(cityLongitude)
 console.log(cityName)
-fetch(queryURL)
+fetch(forecastURL)
 .then(response => response.json())
 .then(function(fiveDayForecast){
 
     console.log(fiveDayForecast)
+})
+});
+
+//this code uses the 5 day forecast API
 
 //day 1
 
-// use moment 
+// adds one day to the current date
 let dayOneDate = moment().add(1,"days").format("MM/D/YYYY");
 console.log(dayOneDate)
+
 let dayOneTemp
 let dayOneHumidity
 let dayOneTemperature
@@ -87,37 +92,12 @@ console.log(currentDay)
 
 
 
-// console logs the array that hold the weather information for the selected city    
-
-
-//input city name  
-
-
-//on search button click convert city name into geographical coordinates 
-
-//console.log("click")
-
-
-
 //pull the weather data for the searched city based on geographical coordinates
 
 
 //display todays weather hook into #today
 
-/*The city name
-The date
-An icon representation of weather conditions
-The temperature
-The humidity
-The wind speed*/
 
-
-//the five day forecast - hook into #forecast
-
-/*The date
-an icon representation of weather conditions
-the temperature
-the humidity */
 
 // Display previous searches in buttons
 
