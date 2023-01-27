@@ -1,7 +1,40 @@
-body {
-    background-color: blue;
+.weather-header{
+    background:linear-gradient(to right, rgb(0, 110, 255), rgb(45, 0, 128));
+    margin-bottom: 2%;
+
+}
+
+#form-label{
+    margin-bottom: 2%; 
+}
+
+#search-input{
+    margin-top: 2%;
 }
 
 #today {
-    background-color: aqua;
+   border-color: black;
+   border-style: solid;
+   border-width: 1px;
+}
+
+
+#forecast{
+    background-color: blueviolet;
+    display: flex;
+    justify-content: end;
+
+}
+
+.forecastCard{
+    padding: 2%;
+    margin: 1%;
+    display: flex;
+    justify-content: end;
+    
+}
+
+.card-body{
+    margin: 1%;
+
 }

@@ -1,10 +1,7 @@
 let APIKey = "ba823d5a80f10453e7778591d8088004";
-
-
-
-//let queryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&appid=" + APIKey;
-
-
+// displays the current date
+let currentDay = moment().format("MM/D/YYYY")
+console.log(currentDay)
 // this function captures the inputted name and stores it in a variable
 
 
@@ -47,7 +44,23 @@ console.log(cityTemp)
 console.log(cityHumidity)
 console.log(cityWind)
 
-// this code call the five day forecast for the searched city
+
+
+//this code puts the city information into the HTML - however it need to be cleared when the search button is hit again
+
+let cityTitle = document.querySelector("#city");
+cityTitle.innerHTML += cityName + "  (" + currentDay + ")";
+let todayTemp = document.querySelector("#todayTemp");
+todayTemp.innerHTML += cityTemp + " °C";
+let todayWind = document.querySelector("#todayWind");
+todayWind.innerHTML += cityWind +" KPH";
+let todayHumidity = document.querySelector("#todayHumidity");
+todayHumidity.innerHTML += cityHumidity + " %";
+
+
+
+
+// this code calls the five day forecast for the searched city
 
 let foreCastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${cityInfo.coord.lat}&lon=${cityInfo.coord.lon}&appid=` + APIKey;
 
@@ -60,11 +73,23 @@ return fetch (foreCastURL)
     console.log(fiveDayForecast)
 })
 
+//generate a historical search button - this does not work
+
+let historicalButton = document.createElement("button");
+historicalButton.innerHTML = "#history";
+historicalButton.onclick = function(){
+console.log("clicked")
+
+let listGroup =document.querySelector("list-group")[0];
+
+listGroup.appendChild(historicalButton);
+
+}
 
 
 });
 
-//this code uses the 5 day forecast API
+
 
 //day 1
 
@@ -87,9 +112,7 @@ let dayOneTemperature
 
 
 
-// displays the current date
-let currentDay = moment().format("MM/D/YYYY")
-console.log(currentDay)
+
 
 
 
