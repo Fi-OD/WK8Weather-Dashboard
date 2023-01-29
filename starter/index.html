@@ -29,10 +29,10 @@
         <form id="search-form" class="form">
           <div class="form-inline form-group">
             <div class="input-group">
-              <input class="form-input weather-search" type="text" id="search-input" placeholder="London"
+              <input class="form-input weather-search col-12" type="text" id="search-input" placeholder="London"
                 aria-labelledby="form-heading" aria-controls="today forecast" />
               <div class="input-group-append">
-                <button type="submit" class="btn search-button" id="search-button" aria-label="submit search">
+                <button type="submit" class="btn search-button col-12" id="search-button" aria-label="submit search">
                   Search
                 </button>
                 <hr class="hr weather-hr" />
@@ -41,56 +41,118 @@
           </div>
         </form>
 
+        <!--<button class="btn btn-secondary" ></button>
+                <button class="btn btn-secondary"> </button>
+                <button class="btn btn-secondary" ></button>
+                <button class="btn btn-secondary"> </button>
+                <button class="btn btn-secondary" ></button>
+                <button class="btn btn-secondary"> </button>-->
+
  <!-- Search History-->
         <div class="list-group" id="history"></div>
       </aside>
 <!--Selected regions weather-->
       <div class="col-lg-9 pb-3">
         <section id="today" class="mt-3" role="region" aria-live="polite">
-          <div class="card-body col-lg-9">
+          <div class="container">
+            <h5 id="city"></h5>
+            <div id="icon"></div>
+            <p id="todayTemp"> Temp:  </p>
+            <p  id="todayHumidity"> Wind:  </p>
+            <p id="todayWind">Humidity:  </p>
+          </div>
+         <!-- <div class="card-body col-lg-9">
             <h5 class="card-title" id="city"></h5>
             <p class="card-text" id="todayTemp"></p>
             <p class="card-text" id="todayHumidity"></p>
             <p class="card-text" id="todayWind"></p>
           </div>
-        </div>
+        </div>-->
         </section>
-        <section id="forecast" class="row mt-3" role="region" aria-live="polite">
-          <div class="card col-lg-2 forecastCard" style="width: 18rem;">
+        <section id="forecast" class="row justify-content-between" role="region" aria-live="polite">
+          <div class = "container forecastCard col-2">
+            <h5  id="dayOneDate"></h5>
+              <img id="dayOneIcon">
+              <p  id="dayOneTemp">Temp:  </p>
+              <p  id="dayOneWind">Wind:  </p>
+              <p id="dayOneHumidity">Humidity: </p>
+          </div>
+          <div class = "container forecastCard col-2">
+            <h5  id="dayTwoDate"></h5>
+              <img id="dayTwoIcon">
+              <p  id="dayTwoTemp">Temp:  </p>
+              <p  id="dayTwoWind">Wind:  </p>
+              <p id="dayTwoHumidity">Humidity: </p>
+          </div>
+          <div class = "container forecastCard col-2">
+            <h5  id="dayThreeDate"></h5>
+              <img id="dayThreeIcon">
+              <p  id="dayThreeTemp">Temp:  </p>
+              <p  id="dayThreeWind">Wind:  </p>
+              <p id="dayThreeHumidity">Humidity: </p>
+          </div>
+          <div class = "container forecastCard col-2">
+            <h5  id="dayFourDate"></h5>
+              <img id="dayFourIcon">
+              <p  id="dayFourTemp">Temp:  </p>
+              <p  id="dayFourWind">Wind:  </p>
+              <p id="dayFourHumidity">Humidity: </p>
+          </div>
+          <div class = "container forecastCard col-2">
+            <h5  id="dayFiveDate"></h5>
+              <img id="dayFiveIcon">
+              <p  id="dayFiveTemp">Temp:  </p>
+              <p  id="dayFiveWind">Wind:  </p>
+              <p id="dayFiveHumidity">Humidity: </p>
+          </div>
+
+
+          
+     <!--     <div class="card col-2 forecastCard" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title" id="dayOneDate">Date</h5>
+              <img id="dayOnceIcon">
+              <p class="card-text" id="dayOneTemp"></p>
+              <p class="card-text" id="dayOneHumidity"></p>
+              <p class="card-text" id="dayOneWind"></p>
             </div>
           </div>
-          <div class="card col-lg-2 forecastCard" style="width: 18rem;">
+          <div class="card col-2 forecastCard" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title" id="dayTwoDate">Date</h5>
+              <img id="dayTwoIcon">
+              <p class="card-text" id="dayTwoTemp"></p>
+              <p class="card-text" id="dayTwoHumidity"></p>
+              <p class="card-text" id="dayTwoWind"></p>
             </div>
           </div>
-          <div class="card col-lg-2 forecastCard" style="width: 18rem;">
+          <div class="card col-2 forecastCard" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title" id="dayThreeDate">Date</h5>
+              <img id="dayThreeIcon">
+              <p class="card-text" id="dayThreeTemp"></p>
+              <p class="card-text" id="dayThreeHumidity"></p>
+              <p class="card-text" id="dayThreeWind"></p>            
             </div>
           </div>
-          <div class="card col-lg-2 forecastCard" style="width: 18rem;">
+          <div class="card col-2 forecastCard" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
+              <h5 class="card-title" id="dayFourDate">Date</h5>
+              <img id="dayFourIcon">
+              <p class="card-text" id="dayFourTemp"></p>
+              <p class="card-text" id="dayFourHumidity"></p>
+              <p class="card-text" id="dayFourWind"></p>
+           </div>
           </div>
-          <div class="card col-lg-2 forecastCard" style="width: 18rem;">
+          <div class="card col-2 forecastCard" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title" id="dayFiveDate">Date</h5>
+              <img id="dayFiveIcon">
+              <p class="card-text" id="dayFiveTemp"></p>
+              <p class="card-text" id="dayFiveHumidity"></p>
+              <p class="card-text" id="dayFiveWind"></p>            
             </div>
-          </div>
+          </div>-->
         </section>
       </div>
     </div>
