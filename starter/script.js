@@ -13,12 +13,12 @@ let cityName = "";
 
 let searchBtn = document.querySelector("#search-button");
 searchBtn.addEventListener("click",function(event){
-    //event.clearVariable();
     event.preventDefault();
     cityName = inputField.value;
     console.log(cityName);
 
     localStorage.setItem("userInput",cityName)
+    
    // localStorage.getItem("userInput")
 
 
@@ -31,15 +31,24 @@ let queryURL =  "https://api.openweathermap.org/data/2.5/weather?q=" + cityName 
 fetch(queryURL)
 .then(response => response.json())
 .then(function(cityInfo){
+      
+ 
+let cityName = "";
+let cityLatitude = "";
+let cityLongitude = "";
+let cityTemp =  "";
+let cityHumidity = "";
+let cityWind = "";
+let cityWeatherIconCode = "";    
 
 
-let cityName = cityInfo.name
-let cityLatitude = cityInfo.coord.lat;
-let cityLongitude = cityInfo.coord.lon;
-let cityTemp =  cityInfo.main.temp;
-let cityHumidity = cityInfo.main.humidity;
-let cityWind = cityInfo.wind.speed;
-let cityWeatherIconCode = cityInfo.weather[0].icon;
+cityName = cityInfo.name
+cityLatitude = cityInfo.coord.lat;
+cityLongitude = cityInfo.coord.lon;
+cityTemp =  cityInfo.main.temp;
+cityHumidity = cityInfo.main.humidity;
+cityWind = cityInfo.wind.speed;
+cityWeatherIconCode = cityInfo.weather[0].icon;
 
 console.log(cityInfo)
 console.log(cityName)
@@ -51,36 +60,31 @@ console.log(cityWind)
 console.log(cityWeatherIconCode)
 
 
-
-
-//this code puts the city information into the HTML - however it need to be cleared when the search button is hit again
+//this code puts the city information into the HTML 
 
 
 cityTitle = document.querySelector("#city");
-cityTitle.innerHTML += cityName + "  (" + currentDay + ")";
+cityTitle.innerHTML = cityName + "  (" + currentDay + ")";
 todayTemp = document.querySelector("#todayTemp");
-todayTemp.innerHTML += cityTemp + " °C";
+todayTemp.innerHTML = "Temp: " + cityTemp + " °C";
 todayWind = document.querySelector("#todayWind");
-todayWind.innerHTML += cityWind +" KPH";
+todayWind.innerHTML = "Wind: " + cityWind +" KPH";
 todayHumidity = document.querySelector("#todayHumidity");
-todayHumidity.innerHTML += cityHumidity + " %";
+todayHumidity.innerHTML = "Humidity:" + cityHumidity + " %";
 
 // this code adds the current weather icon to the summary page
 
+let icon ="";
 let iconContainer = document.querySelector("#icon");
-let icon = document.createElement("img");
+icon = document.createElement("img");
 icon.src = `http://openweathermap.org/img/wn/`+ cityWeatherIconCode +`@2x.png`
 iconContainer.appendChild(icon);
 
 
 // this code calls the five day forecast for the searched city
 
-//Once you find the data.list.dt -Make a for loop and iterate over the dt values within list 
-//but do i += 8, instead of I++ since the time stamps must be every 7 to show the 5-day correctly, 
-//instead of every 3 hours like the API default.  Hope that helps!
 
-
-let foreCastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${cityInfo.coord.lat}&lon=${cityInfo.coord.lon}&appid=` + APIKey;
+let foreCastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${cityInfo.coord.lat}&lon=${cityInfo.coord.lon}&appid=` + APIKey + "&units=metric";
 
 return fetch (foreCastURL)
 })
@@ -89,26 +93,6 @@ return fetch (foreCastURL)
 .then(function(fiveDayForecast){
 
     console.log(fiveDayForecast)
-})
-
-;
-//generate a historical search button - this does not work
-
-let historicalButton = document.createElement("button");
-historicalButton.innerHTML = "#history";
-historicalButton.onclick = function(){
-console.log("clicked")
-
-let listGroup =document.querySelector("list-group")[0];
-
-listGroup.appendChild(historicalButton);
-
-}
-
-
-});
-
-
 
 //day 1
 
@@ -117,9 +101,26 @@ let dayOneDate = document.querySelector("#dayOneDate")
 dayOneDate.innerHTML += moment().add(1,"days").format("MM/D/YYYY");
 
 
-let dayOneTemp
-let dayOneHumidity
-let dayOneTemperature
+let dayOneTemp = fiveDayForecast.list[0].main.temp
+let postDayOneTemp = document.querySelector("#dayOneTemp");
+postDayOneTemp.innerHTML = "Temp: " + dayOneTemp + " °C";
+console.log(dayOneTemp)
+
+let dayOneWind = fiveDayForecast.list[0].wind.speed;
+let postDayOneWind = document.querySelector("#dayOneWind")
+postDayOneWind.innerHTML = "Wind: " + dayOneWind + " KPH";
+console.log(dayOneWind)
+
+let dayOneHumidity = fiveDayForecast.list[0].main.humidity
+let postDayOneHumidity = document.querySelector("#dayOneHumidity")
+postDayOneHumidity.innerHTML = "Humidity: " + dayOneHumidity + "  %";
+console.log(dayOneHumidity)
+
+let dayOneIconCode = fiveDayForecast.list[0].weather[0].icon;
+let dayOneIconContainer = document.querySelector("#dayOneIcon");
+let dayOneIcon = document.createElement("img");
+dayOneIcon.src = `http://openweathermap.org/img/wn/`+ dayOneIconCode +`@2x.png`
+dayOneIconContainer.appendChild(dayOneIcon);
 
 //day 2
 let dayTwoDate = document.querySelector("#dayTwoDate")
@@ -144,10 +145,30 @@ dayFiveDate.innerHTML += moment().add(5,"days").format("MM/D/YYYY")
 
 
 
-//pull the weather data for the searched city based on geographical coordinates
+})
+
+;
+//generate a historical search button - this does not work
+
+let historicalButton = document.createElement("button");
+historicalButton.innerHTML = "#history";
+historicalButton.onclick = function(){
+console.log("clicked")
+
+let listGroup =document.querySelector("list-group")[0];
+
+listGroup.appendChild(historicalButton);
+
+}
+
+});
 
 
-//display todays weather hook into #today
+
+
+
+
+
 
 
 
